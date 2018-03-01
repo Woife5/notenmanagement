@@ -18,14 +18,14 @@ function KlassenÜbersicht(Klasse) {
   Klasse = Klasse.innerHTML
   let KlassenInfo = getKlassenTest(Klasse)
   let badge = ''
-  badge += '<li><div class="collapsible-header"> Typ Fach Datum Notendurchschnitt</div><div class="collapsible-body"><p>Header</p></div>'
-  badge += '</li>'
+  badge += '<div class="row"><div class="col s3 center"><p>Typ</p></div> <div class="col s3 center"><p>Fach</p></div> <div class="col s3 center"><p>Datum</p></div> <div class="col s3 center"><p>Notendurchschnitt</p></div></div>'
+  badge += ''
   for (let j = 0; j < KlassenInfo.length; j++) {
     badge += '<li>'
-    badge += '<div class="collapsible-header">'+KlassenInfo[j].Typ+' '+KlassenInfo[j].Fach+' '+KlassenInfo[j].Datum+' '+KlassenInfo[j].Notendurchschnitt+'</div>'
+    badge += '<div class="collapsible-header"><div class="row"><div class="col s3 center">'+KlassenInfo[j].Typ+'</div><div class="col s3 center"> '+KlassenInfo[j].Fach+'</div><div class="col s3 center">'+KlassenInfo[j].Datum+'</div><div class="col s3 center">'+KlassenInfo[j].Notendurchschnitt+'</div></div></div>'
     badge+='<div class="collapsible-body"><p>'+j+'</p></div>'
     badge+='</li>'
   }
-console.log(badge);
+  badge+=''
   document.getElementById('KlassenTestInfo').innerHTML = badge
 }

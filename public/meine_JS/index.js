@@ -18,7 +18,7 @@ function KlassenÜbersicht(Klasse) {
   Klasse = Klasse.innerHTML
   let KlassenInfo = getKlassenTest(Klasse)
   let badge = ''
-  badge += '<div class="row"><div class="col s3 center"><p>Typ</p></div> <div class="col s3 center"><p>Fach</p></div> <div class="col s3 center"><p>Datum</p></div> <div class="col s3 center"><p>Notendurchschnitt</p></div></div>'
+  let Überschrift='<div class="row"><div class="col s3 center"><p class="flow-text">Typ</p></div> <div class="col s3 center"><p class="flow-text">Fach</p></div> <div class="col s3 center"><p class="flow-text">Datum</p></div> <div class="col s3 center"><p class="flow-text">Ø</p></div></div>'
   badge += ''
   for (let j = 0; j < KlassenInfo.length; j++) {
     badge += '<li>'
@@ -27,5 +27,6 @@ function KlassenÜbersicht(Klasse) {
     badge+='</li>'
   }
   badge+=''
-  document.getElementById('KlassenTestInfo').innerHTML = badge
+  document.getElementById('klassenÜ').innerHTML = Überschrift
+  document.getElementById('KlassenTestInfo').innerHTML=badge
 }

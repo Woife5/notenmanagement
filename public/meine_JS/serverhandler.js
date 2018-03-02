@@ -17,11 +17,13 @@ let KlassenInfo={'5AHELS': [
     {"Tid":"9","Typ":"SMÜP", "Fach":"Englisch","Datum":"20.2.2018","Notendurchschnitt":"2,8"},
     {"Tid":"10","Typ":"Test", "Fach":"KSN","Datum":"24.2.2018","Notendurchschnitt":"3,6"}
 ],
+'5BHELS':[],
 '1AHELS': [
     {"Tid":"11","Typ":"Test", "Fach":"Fsst","Datum":"20.2.2018","Notendurchschnitt":"3,2"},
     {"Tid":"12","Typ":"SA", "Fach":"Mathe","Datum":"15.2.2018","Notendurchschnitt":"2,2"},
     {"Tid":"13","Typ":"Test", "Fach":"KSN","Datum":"24.2.2018","Notendurchschnitt":"3,6"}
-] }
+]
+}
 
 let TestInfo={
   "0":[{"Name":"Hans Gruber","Punktestand":"10/20","Note":"4","Bemerkung":"4-5"},

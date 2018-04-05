@@ -25,9 +25,25 @@ app.listen(8008, function () {
   console.log('Webserver listening on port 8008!')
 })
 
+app.get('/api/classes',function(req, res){
+	con.query('SELECT * FROM classes ORDER BY class ASC', function(err, result, fields){
+		if(err) throw err
+		res.json(result)
+	})
+})
+
+app.get('/api/students', function(req, res){
+	con.query('', function(err, result, fields){
+		if(err) throw err
+	})
+})
+
 app.get('/api/class/:class',function(req, res){
   let klasse = req.params.class
-  res.send('Klasse: '+klasse)
+	con.query('SELECT results.tfk as testkey, AVG(grade) as avggrade, type, subject, maxpoints, date FROM results JOIN schueler JOIN tests JOIN classes ON results.tfk = tests.ID AND results.sfk = schueler.ID AND schueler.classfk = classes.ID where classes.class ="'+klasse+'" GROUP BY results.tfk', function(err, result, fields){
+		if(err) throw err
+		res.send(result)
+	})
 })
 
 app.get('/api/test/:tid',function(req, res){

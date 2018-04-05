@@ -1,3 +1,7 @@
+$(document).ready(function() {
+  Klassendropdown()
+})
+
 function activeTab() {
   return '<li class="active"><a href="#">KlassenInfo</a></li><li ><a href="./SchuelerInfo.html">SchuelerInfo</a></li><li><a href="#">asdf</a></li>'
 }

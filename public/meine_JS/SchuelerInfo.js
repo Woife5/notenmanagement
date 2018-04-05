@@ -4,3 +4,14 @@ function activeTab() {
 function getColor(){
   return "pink"
 }
+let schueler={
+  "Franz": null,
+  "Martin": null,
+  "Wolfgang": null
+}
+
+ $(document).ready(function(){
+   $('input.autocomplete').autocomplete({
+     data: schueler,
+   });
+ });

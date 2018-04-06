@@ -48,5 +48,8 @@ app.get('/api/class/:class',function(req, res){
 
 app.get('/api/test/:tid',function(req, res){
   let testid = req.params.tid
-  res.send('Test ID: '+testid)
+	con.query('SELECT * FROM results JOIN schueler JOIN tests JOIN classes ON results.tfk = tests.ID AND results.sfk = schueler.ID AND schueler.classfk = classes.ID where results.tid ="'+testid+'"', function(err, result, fields){
+		if(err) throw err
+		res.send(result)
+	})
 })

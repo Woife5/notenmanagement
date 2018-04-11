@@ -1,17 +1,29 @@
+$(document).ready(function() {
+  autocomlete()
+
+});
+
 function activeTab() {
   return '<li ><a href="./index.html">KlassenInfo</a></li><li class="active"><a href="#">SchuelerInfo</a></li><li><a href="#">asdf</a></li>'
 }
-function getColor(){
+
+function getColor() {
   return "pink"
 }
-let schueler={
-  "Franz": null,
-  "Martin": null,
-  "Wolfgang": null
-}
 
- $(document).ready(function(){
-   $('input.autocomplete').autocomplete({
-     data: schueler,
-   });
- });
+function autocomlete() {
+  getSchülerListe(function(responseSchuelerListe) {
+    $('input.autocomplete').autocomplete({
+      data: responseSchuelerListe,
+      onautocomlete:showTest(this)
+    });
+  })
+}
+function showTests(schueler){
+  getSchülerInfo(schueler, function(response) {
+  let x=''
+  console.log(response);
+  for (var i = 0; i < response.length; i++) {
+    console.log(response[i]);
+  }
+}

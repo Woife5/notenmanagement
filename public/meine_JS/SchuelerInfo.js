@@ -10,8 +10,9 @@ let schueler={
   "Wolfgang": null
 }
 
- $(document).ready(function(){
-   $('input.autocomplete').autocomplete({
-     data: schueler,
-   });
- });
+function onload(){
+  document.getElementById('searchdiv').innerHTML = '<div class="row"><div class="col s12"><div class="row"><div class="input-field col s12"><input type="text" id="autocomplete-input" class="autocomplete" ><label for="autocomplete-input">Schüler</label></div></div></div></div>'
+  $('input.autocomplete').autocomplete({
+    data: schueler,
+  });
+}

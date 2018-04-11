@@ -26,6 +26,7 @@ app.listen(8008, function () {
 })
 
 app.get('/api/classes',function(req, res){
+	console.log("im server ");
 	con.query('SELECT * FROM classes ORDER BY class ASC', function(err, result, fields){
 		if(err) throw err
 		res.json(result)

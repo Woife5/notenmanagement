@@ -1,19 +1,35 @@
-
-
-function getKlassenTest(Klasse){
-  /*let httpReq = new XMLHttpRequest()
-  httpReq.open("GET", '/api/'+Klasse)
+function getKlassen(callback){
+  let httpReq = new XMLHttpRequest()
+  httpReq.open("GET", '/api/classes')
   httpReq.onload = function() {
     if(this.status != 200){
       let errData = JSON.parse(this.responseText)
-      Materialize.toast(errData['userdesc'],errorduration,errorcolor)
     }else{
       let resData = JSON.parse(this.responseText)
-      callback(JSON.parse(this.responseText))
+      console.log(resData)
+      callback(resData)
     }
-  }*/
-  return KlassenInfo[Klasse]
+  }
+  httpReq.send(null)
+console.log("nach serverhandler");
 }
+
+function getKlassenTest(Klasse, callback){
+  console.log("getKlassenTest callback anfgan");
+  let httpReq = new XMLHttpRequest()
+  httpReq.open("GET", '/api/classes/'+Klasse)
+  httpReq.onload = function() {
+    if(this.status != 200){
+      let errData = JSON.parse(this.responseText)
+    }else{
+      let resData = JSON.parse(this.responseText)
+      console.log(resData +"im getKlassenTest")
+      callback(resData)
+    }
+  }
+  httpReq.send(null)
+console.log("nach serverhandler im getKlassenTest");
+}/*
 function getTestInfo(Test){
   let schülerliste=TestInfo[Test]
   return schülerliste

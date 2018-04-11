@@ -26,6 +26,7 @@ app.listen(8008, function () {
 })
 
 app.get('/api/classes',function(req, res){
+	console.log("im server ");
 	con.query('SELECT * FROM classes ORDER BY class ASC', function(err, result, fields){
 		if(err) throw err
 		res.json(result)
@@ -38,7 +39,7 @@ app.get('/api/students', function(req, res){
 	})
 })
 
-app.get('/api/class/:class',function(req, res){
+app.get('/api/classes/:class',function(req, res){
   let klasse = req.params.class
 	con.query('SELECT results.tfk as testkey, AVG(grade) as avggrade, type, subject, maxpoints, date FROM results JOIN schueler JOIN tests JOIN classes ON results.tfk = tests.ID AND results.sfk = schueler.ID AND schueler.classfk = classes.ID where classes.class ="'+klasse+'" GROUP BY results.tfk', function(err, result, fields){
 		if(err) throw err

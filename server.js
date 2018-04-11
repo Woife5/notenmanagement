@@ -43,11 +43,14 @@ app.get('/api/classes/:class',function(req, res){
   let klasse = req.params.class
 	con.query('SELECT results.tfk as testkey, AVG(grade) as avggrade, type, subject, maxpoints, date FROM results JOIN schueler JOIN tests JOIN classes ON results.tfk = tests.ID AND results.sfk = schueler.ID AND schueler.classfk = classes.ID where classes.class ="'+klasse+'" GROUP BY results.tfk', function(err, result, fields){
 		if(err) throw err
-		res.send(result)
+		res.json(result)
 	})
 })
 
 app.get('/api/test/:tid',function(req, res){
   let testid = req.params.tid
-  res.send('Test ID: '+testid)
+	con.query('SELECT grade, points, comment, firstname, lastname, type, subject, maxpoints, date, class FROM results JOIN schueler JOIN tests JOIN classes ON results.tfk = tests.ID AND results.sfk = schueler.ID AND schueler.classfk = classes.ID WHERE tests.ID ="'+testid+'"', function(err, result, fields){
+		if(err) throw err
+		res.json(result)
+	})
 })

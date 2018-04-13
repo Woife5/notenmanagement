@@ -26,7 +26,6 @@ app.listen(8008, function () {
 })
 
 app.get('/api/classes',function(req, res){
-	console.log("im server ");
 	con.query('SELECT * FROM classes ORDER BY class ASC', function(err, result, fields){
 		if(err) throw err
 		res.json(result)
@@ -34,8 +33,9 @@ app.get('/api/classes',function(req, res){
 })
 
 app.get('/api/students', function(req, res){
-	con.query('', function(err, result, fields){
+	con.query('SELECT firstname, lastname FROM schueler ORDER BY lastname, firstname', function(err, result, fields){
 		if(err) throw err
+		res.json(result)
 	})
 })
 
@@ -53,4 +53,25 @@ app.get('/api/test/:tid',function(req, res){
 		if(err) throw err
 		res.json(result)
 	})
+})
+
+app.get('/api/students/:student', function(req, res){
+	let student = req.params.student
+	if(student.includes(' ')){
+		let firstname = student.split(' ').slice(0, -1).join(' ') // Alle Vornamen, von StackOverflow
+		let lastname = student.split(' ').slice(-1).join(' ') // Nachname, von StackOverflow
+		con.query('SELECT * FROM schueler where lastname LIKE "%'+lastname+'%" AND firstname LIKE "%'+firstname+'%"', function(err, result, fields){
+			if(err) throw err
+			res.json(result)
+			return
+		})
+	}else{
+		con.query('SELECT * FROM schueler where firstname LIKE "%'+firstname+'%" OR lastname LIKE "%'+lastname+'%"', function(err, result, fields){
+			if(err) throw err
+			res.json(result)
+			return
+		})
+	}
+
+
 })

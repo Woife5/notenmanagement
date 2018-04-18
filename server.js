@@ -39,6 +39,14 @@ app.get('/api/students', function(req, res){
 	})
 })
 
+app.get('/api/students/:class', function(req, res){
+	let klasse = req.params.class
+	con.query('SELECT firstname, lastname FROM schueler JOIN classes ON classes.ID = schueler.classfk WHERE class = "'+klasse+'" ORDER BY lastname, firstname', function(err, result, fields){
+		if(err) throw err
+		res.json(result)
+	})
+})
+
 app.get('/api/classes/:class',function(req, res){
   let klasse = req.params.class
 	con.query('SELECT results.tfk as testkey, AVG(grade) as avggrade, type, subject, maxpoints, date FROM results JOIN schueler JOIN tests JOIN classes ON results.tfk = tests.ID AND results.sfk = schueler.ID AND schueler.classfk = classes.ID where classes.class ="'+klasse+'" GROUP BY results.tfk', function(err, result, fields){

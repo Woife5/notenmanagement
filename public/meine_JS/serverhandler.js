@@ -11,11 +11,9 @@ function getKlassen(callback){
     }
   }
   httpReq.send(null)
-console.log("nach serverhandler");
 }
 
 function getKlassenTest(Klasse, callback){
-  console.log("getKlassenTest callback anfgan");
   let httpReq = new XMLHttpRequest()
   httpReq.open("GET", '/api/classes/'+Klasse)
   httpReq.onload = function() {
@@ -23,33 +21,53 @@ function getKlassenTest(Klasse, callback){
       let errData = JSON.parse(this.responseText)
     }else{
       let resData = JSON.parse(this.responseText)
-      console.log(resData +"im getKlassenTest")
+      console.log(resData)
       callback(resData)
     }
   }
   httpReq.send(null)
-console.log("nach serverhandler im getKlassenTest");
-}/*
-function getTestInfo(Test){
-  let schülerliste=TestInfo[Test]
-  return schülerliste
 }
-
-/*
-function getReserved(year, month, day, lesson, callback){
+function getTestInfo(TestID, callback){
   let httpReq = new XMLHttpRequest()
-  httpReq.open("GET", '/api/'+year+'/'+month+'/'+day+'/'+lesson)
+  httpReq.open("GET", '/api/test/'+TestID)
   httpReq.onload = function() {
     if(this.status != 200){
       let errData = JSON.parse(this.responseText)
-      Materialize.toast(errData['userdesc'],errorduration,errorcolor)
     }else{
-      callback(JSON.parse(this.responseText))
+      let resData = JSON.parse(this.responseText)
+      console.log(resData)
+      callback(resData)
     }
-  }
-  httpReq.onerror = function() {
-    Materialize.toast('Unknown network error occured',errorduration,errorcolor)
   }
   httpReq.send(null)
 }
-*/
+
+function getSchülerListe(callback){
+  let httpReq = new XMLHttpRequest()
+  httpReq.open("GET", '/api/sudents')
+  httpReq.onload = function() {
+    if(this.status != 200){
+      let errData = JSON.parse(this.responseText)
+    }else{
+      let resData = JSON.parse(this.responseText)
+      console.log(resData)
+      callback(resData)
+    }
+  }
+  httpReq.send(null)
+}
+
+function getSchülerInfo(schüler,callback){
+  let httpReq = new XMLHttpRequest()
+  httpReq.open("GET", '/api/sudents/'+schüler)
+  httpReq.onload = function() {
+    if(this.status != 200){
+      let errData = JSON.parse(this.responseText)
+    }else{
+      let resData = JSON.parse(this.responseText)
+      console.log(resData)
+      callback(resData)
+    }
+  }
+  httpReq.send(null)
+}

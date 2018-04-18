@@ -44,7 +44,7 @@ function getTestInfo(TestID, callback){
 
 function getSchülerListe(callback){
   let httpReq = new XMLHttpRequest()
-  httpReq.open("GET", '/api/sudents')
+  httpReq.open("GET", '/api/students')
   httpReq.onload = function() {
     if(this.status != 200){
       let errData = JSON.parse(this.responseText)
@@ -57,9 +57,9 @@ function getSchülerListe(callback){
   httpReq.send(null)
 }
 
-function getSchülerInfo(schüler,callback){
+function getSchülerInfo(schueler,callback){
   let httpReq = new XMLHttpRequest()
-  httpReq.open("GET", '/api/sudents/'+schüler)
+  httpReq.open("GET", '/api/students/'+schueler)
   httpReq.onload = function() {
     if(this.status != 200){
       let errData = JSON.parse(this.responseText)

@@ -59,7 +59,8 @@ function getSchülerListe(callback){
 
 function getSchülerInfo(schueler,callback){
   let httpReq = new XMLHttpRequest()
-  httpReq.open("GET", '/api/students/'+schueler)
+  console.log("im getSchülerInfo");
+  httpReq.open("GET", '/api/student/'+schueler)
   httpReq.onload = function() {
     if(this.status != 200){
       let errData = JSON.parse(this.responseText)

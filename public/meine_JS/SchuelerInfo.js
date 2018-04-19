@@ -31,6 +31,7 @@ function onload(){
 
 function showTests(){
   let schueler=document.getElementById("autocomplete-input").value
+  
   getSchülerInfo(schueler, function(response) {
 
     let x=''

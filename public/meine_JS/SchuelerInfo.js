@@ -22,7 +22,6 @@ function onload(){
   getSchülerListe(function(responseSchuelerListe) {
     let SchuelerListe={}
     for (var i = 0; i < responseSchuelerListe.length; i++) {
-
       SchuelerListe[responseSchuelerListe[i].firstname+" "+responseSchuelerListe[i].lastname]=null
     }
     $('input.autocomplete').autocomplete({

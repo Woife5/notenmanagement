@@ -12,7 +12,13 @@ function getColor() {
 }
 
 function onload(){
-  document.getElementById('searchdiv').innerHTML = '<div class="row"><div class="col s12"><div class="row"><div class="input-field col s12"><input type="text" id="autocomplete-input" class="autocomplete" ><label for="autocomplete-input">Schüler</label></div></div></div></div>'
+  let form='<div class="row"><div class="col s12"><div class="row">'
+  form+='<form onsubmit="showTests(); return false" ><div class="input-field col s11">'
+  form+='<input type="text" id="autocomplete-input" class="autocomplete" autocomplete="off"><label for="autocomplete-input">Schüler</label>'
+  form+='<button class="btn waves-effect waves-light col s12" id="submitbutton" type="submit" value="Value">Submit<i class="material-icons right">send</i></button>'
+  form+='</div></form></div></div></div>'
+
+  document.getElementById('searchdiv').innerHTML = form
   getSchülerListe(function(responseSchuelerListe) {
     let SchuelerListe={}
     for (var i = 0; i < responseSchuelerListe.length; i++) {
@@ -30,13 +36,25 @@ function onload(){
 
 function showTests(){
   let schueler=document.getElementById("autocomplete-input").value
-  
-  getSchülerInfo(schueler, function(response) {
 
+  getSchülerInfo(schueler, function(response) {
+    let subject
     let x=''
-    console.log(response);
-    for (var i = 0; i < response.length; i++) {
+
+    x+='<div class="collection with-header row">'
+    x+='<li class="collection-header"><h5 class="col s2">Fach</h5>'
+    x+='<h5 class="col s2">Datum</h5>'
+    x+='<h5 class="col s2">Typ</h5>'
+    x+='<h5 class="col s2">Note</h5>'
+    x+='<h5 class="col s2">Punke</h5>'
+    x+='<h5 class="col s2">Max Punkte</h5></li>'
+
+    for (let i = 0; i < response.length; i++) {
+
+      x+='<a href="#!" class="collection-item"><div class="col s2">'+response[i].subject+'</div> <div class="col s2">'+response[i].date+'</div> <div class="col s2">'+response[i].type+'</div> <div class="col s2">'+response[i].grade+'</div> <div class="col s2">'+response[i].points+'</div> <div class="col s2">'+response[i].maxpoints+'</div></a>'
       console.log(response[i]);
     }
+    x+='</div>'
+    document.getElementById("searchcontent").innerHTML=x
   })
 }

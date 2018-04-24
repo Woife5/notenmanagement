@@ -4,7 +4,7 @@ $(document).ready(function() {
 });
 
 function activeTab() {
-  return '<li ><a href="./index.html">KlassenInfo</a></li><li class="active"><a href="#">SchuelerInfo</a></li><li><a href="./eintagen.html">Eintragen</a></li>'
+  return '<li ><a href="./index.html">KlassenInfo</a></li><li class="active"><a href="#">SchuelerInfo</a></li><li><a href="./eintragen.html">Eintragen</a></li>'
 }
 
 function getColor() {
@@ -15,7 +15,7 @@ function onload(){
   let form='<div class="row"><div class="col s12"><div class="row">'
   form+='<form onsubmit="showTests(); return false" ><div class="input-field col s11">'
   form+='<input type="text" id="autocomplete-input" class="autocomplete" autocomplete="off"><label for="autocomplete-input">Schüler</label>'
-  form+='<button class="btn waves-effect waves-light col s12" id="submitbutton" type="submit" value="Value">Submit<i class="material-icons right">send</i></button>'
+  form+='<button class="btn waves-effect waves-light col s12 '+getColor()+'" id="submitbutton" type="submit" value="Value">Submit<i class="material-icons right">send</i></button>'
   form+='</div></form></div></div></div>'
 
   document.getElementById('searchdiv').innerHTML = form

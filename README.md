@@ -1,6 +1,8 @@
 Benötigte Programme : Npm 
 
-Start des Programmes: den Ordner mit der Datei "server.js" in der Komandozeile öffnen (./notenmanagement)
+Start des Programmes: 
+
+                      den Ordner mit der Datei "server.js" in der Komandozeile öffnen (./notenmanagement)
 
                       Befehl "npm start" eingeben
                       

@@ -72,7 +72,7 @@ app.get('/api/student/:student', function(req, res){
 		con.query('SELECT * FROM schueler JOIN tests JOIN results ON results.tfk = tests.ID AND results.sfk = tests.ID where lastname LIKE "%'+lastname+'%" AND firstname LIKE "%'+firstname+'%"', function(err, result, fields){
 			if(err) throw err
 			res.json(result)
-			console.log(result);
+			
 			return
 		})
 	}else{
